@@ -17,28 +17,26 @@ public class ProvaL implements Deque {
     String nome;
     ProvaL next, prev;
 
-    public ProvaL(String nome) {
-        next = null;
-        prev = null;
-        this.nome = nome;
-    }
-
     public ProvaL() {
         next = null;
         prev = null;
     }
+    
+    public ProvaL(String nome) {
+        next = null;
+        prev = null;
+        this.nome = nome;
+    }    
 
     public static void main(String[] args) {
         ProvaL p = new ProvaL();
         System.out.println(p);
-        p.addLast("ciao");
+        p.addLast("Uno");
         System.out.println(p);
-        p.addLast("clo");
+        p.addLast("Due");
         System.out.println(p);
         p.removeLast();
         System.out.println(p);
-
-
     }
 
     @Override
@@ -235,9 +233,9 @@ public class ProvaL implements Deque {
             return s+"}";
         ProvaL top=this.next;
         for (top = this.next; top.next != this.next; top = top.next) {
-            s += " nome=" + top.nome + ",";
+            s += " nome = " + top.nome + ",";
         }
-        return s+" nome=" + top.nome +" }";
+        return s+" nome = " + top.nome +" }";
     }
     
 }
