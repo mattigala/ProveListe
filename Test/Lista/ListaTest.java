@@ -41,11 +41,8 @@ public class ListaTest {
      */
     @Test
     public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        Lista.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Lista l = new Lista();
+        l.addLast("Uno");
     }
 
     /**
@@ -53,12 +50,10 @@ public class ListaTest {
      */
     @Test
     public void testAddFirst() {
-        System.out.println("addFirst");
-        Object e = null;
-        Lista instance = new Lista();
-        instance.addFirst(e);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Lista l = new Lista();
+        l.addFirst("Uno");
+        assertEquals("Puntatori dal primo al nuovo elemento elemento.",l.next.next.prev.next.nome,"Uno");
+        assertEquals("Puntatori dal terzo al nuovo elemento elemento.",l.next.next.next.prev.nome,"Uno");
     }
 
     /**
