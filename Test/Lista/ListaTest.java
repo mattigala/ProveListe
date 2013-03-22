@@ -33,6 +33,8 @@ public class ListaTest {
         l.addFirst("Uno");
         assertEquals("Puntatori dal primo al nuovo elemento elemento.",l.next.next.prev.next.nome,"Uno");
         assertEquals("Puntatori dal terzo al nuovo elemento elemento.",l.next.next.next.prev.nome,"Uno");
+        // Manca il controllo se non riesce piu a inserire.
+        // Manca il controllo se è vuota
     }
 
     /**
@@ -44,6 +46,8 @@ public class ListaTest {
         l.addLast("Uno");
         assertEquals("Puntatori dal primo al nuovo elemento elemento.",l.next.prev.next.prev.nome,"Uno");
         assertEquals("Puntatori dal penultimo al nuovo elemento elemento.",l.next.prev.prev.next.nome,"Uno");
+        // Manca il controllo se non riesce piu a inserire.
+        // Manca il controllo se è vuota
     }
 
     /**
@@ -55,6 +59,8 @@ public class ListaTest {
         l.offerFirst("Uno");
         assertEquals("Puntatori dal primo al nuovo elemento elemento.",l.next.next.prev.next.nome,"Uno");
         assertEquals("Puntatori dal terzo al nuovo elemento elemento.",l.next.next.next.prev.nome,"Uno");
+        // Manca il controllo se non riesce piu a inserire.
+        // Manca il controllo se è vuota
     }
 
     /**
@@ -66,34 +72,42 @@ public class ListaTest {
         l.offerLast("Uno");
         assertEquals("Puntatori dal primo al nuovo elemento elemento.",l.next.prev.next.prev.nome,"Uno");
         assertEquals("Puntatori dal penultimo al nuovo elemento elemento.",l.next.prev.prev.next.nome,"Uno");
+        // Manca il controllo se non riesce piu a inserire.
+        // Manca il controllo se è vuota
     }
 
     /**
      * Test of removeFirst method, of class Lista.
      */
     @Test
-    public void testRemoveFirst() {
+    public void testRemoveFirst() throws Exception {
         Lista l = new Lista();
         l.addLast("Uno");
         l.addLast("Due");
         l.removeFirst();
         assertEquals("Primo elemento.",l.next.prev.next.nome,"Due");
-        l.removeFirst();
-        assertEquals("Lista vuota.",l.next,null);
+        try{
+            l.removeFirst();
+        }catch(Exception e){
+            throw new Exception("Lista vuota.");
+        }
     }
 
     /**
      * Test of removeLast method, of class Lista.
      */
     @Test
-    public void testRemoveLast() {
+    public void testRemoveLast() throws Exception {
         Lista l = new Lista();
         l.addLast("Uno");
         l.addLast("Due");
         l.removeLast();
         assertEquals("Ultimo elemento.",l.next.prev.next.nome,"Uno");
-        l.removeLast();
-        assertEquals("Lista vuota.",l.next,null);
+        try{
+            l.removeLast();
+        }catch(Exception e){
+            throw new Exception("Lista vuota.");
+        }
     }
 
     /**
@@ -101,13 +115,12 @@ public class ListaTest {
      */
     @Test
     public void testPollFirst() {
-        System.out.println("pollFirst");
-        Lista instance = new Lista();
-        Object expResult = null;
-        Object result = instance.pollFirst();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Lista l = new Lista();
+        l.addLast("Uno");
+        l.addLast("Due");
+        assertEquals("Valore di ritorno true.",l.removeLast(),true);
+        assertEquals("Primo elemento.",l.next.prev.next.nome,"Due");
+        assertEquals("Valore di ritorno false.",l.removeLast(),false);
     }
 
     /**
@@ -115,41 +128,46 @@ public class ListaTest {
      */
     @Test
     public void testPollLast() {
-        System.out.println("pollLast");
-        Lista instance = new Lista();
-        Object expResult = null;
-        Object result = instance.pollLast();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Lista l = new Lista();
+        l.addLast("Uno");
+        l.addLast("Due");
+        assertEquals("Valore di ritorno true.",l.removeLast(),true);
+        assertEquals("Ultimo elemento.",l.next.prev.next.nome,"Uno");
+        assertEquals("Valore di ritorno false.",l.removeLast(),false);
     }
 
     /**
      * Test of getFirst method, of class Lista.
      */
     @Test
-    public void testGetFirst() {
-        System.out.println("getFirst");
-        Lista instance = new Lista();
-        Object expResult = null;
-        Object result = instance.getFirst();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testGetFirst() throws Exception {
+        Lista l = new Lista();
+        try{
+            l.getFirst();
+        }catch(Exception e){
+            throw new Exception("Lista vuota.");
+        }
+        l.addLast("Uno");
+        assertEquals("Un elemento",l.getFirst(),"Uno");
+        l.addLast("Due");
+        assertEquals("Piu elementi",l.getFirst(),"Uno");
     }
 
     /**
      * Test of getLast method, of class Lista.
      */
     @Test
-    public void testGetLast() {
-        System.out.println("getLast");
-        Lista instance = new Lista();
-        Object expResult = null;
-        Object result = instance.getLast();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testGetLast() throws Exception {
+        Lista l = new Lista();
+        try{
+            l.getLast();
+        }catch(Exception e){
+            throw new Exception("Lista vuota.");
+        }
+        l.addLast("Uno");
+        assertEquals("Un elemento",l.getLast(),"Uno");
+        l.addLast("Due");
+        assertEquals("Piu elementi",l.getLast(),"Due");
     }
 
     /**
@@ -157,13 +175,14 @@ public class ListaTest {
      */
     @Test
     public void testPeekFirst() {
-        System.out.println("peekFirst");
-        Lista instance = new Lista();
-        Object expResult = null;
-        Object result = instance.peekFirst();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Lista l = new Lista();
+        assertEquals("Valore di ritorno false.",l.peekFirst(),false);
+        l.addLast("Uno");
+        assertEquals("Valore di ritorno true.",l.peekFirst(),true);
+        assertEquals("Un elemento.",l.peekFirst(),"Uno");
+        l.addLast("Due");
+        assertEquals("Secondo test valore di ritorno true.",l.peekFirst(),true);
+        assertEquals("Piu elementi.",l.peekFirst(),"Uno");
     }
 
     /**
@@ -171,13 +190,14 @@ public class ListaTest {
      */
     @Test
     public void testPeekLast() {
-        System.out.println("peekLast");
-        Lista instance = new Lista();
-        Object expResult = null;
-        Object result = instance.peekLast();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Lista l = new Lista();
+        assertEquals("Valore di ritorno false.",l.peekLast(),false);
+        l.addLast("Uno");
+        assertEquals("Valore di ritorno true.",l.peekLast(),true);
+        assertEquals("Un elemento.",l.peekLast(),"Uno");
+        l.addLast("Due");
+        assertEquals("Secondo test valore di ritorno true.",l.peekLast(),true);
+        assertEquals("Piu elementi.",l.peekLast(),"Due");
     }
 
     /**
@@ -186,10 +206,10 @@ public class ListaTest {
     @Test
     public void testRemoveFirstOccurrence() {
         System.out.println("removeFirstOccurrence");
-        Object o = null;
+        Object e = null;
         Lista instance = new Lista();
         boolean expResult = false;
-        boolean result = instance.removeFirstOccurrence(o);
+        boolean result = instance.removeFirstOccurrence(e);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -201,10 +221,10 @@ public class ListaTest {
     @Test
     public void testRemoveLastOccurrence() {
         System.out.println("removeLastOccurrence");
-        Object o = null;
+        Object e = null;
         Lista instance = new Lista();
         boolean expResult = false;
-        boolean result = instance.removeLastOccurrence(o);
+        boolean result = instance.removeLastOccurrence(e);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
