@@ -4,14 +4,9 @@
  */
 package Lista;
 
-import Lista.Lista;
 import java.util.Collection;
 import java.util.Iterator;
-import org.junit.After;
-import org.junit.AfterClass;
 import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -19,22 +14,6 @@ import org.junit.Test;
  * @author Eddy
  */
 public class ListaTest {
-
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() throws Exception {
-    }
-
-    @After
-    public void tearDown() throws Exception {
-    }
 
     /**
      * Test of main method, of class Lista.
@@ -72,14 +51,10 @@ public class ListaTest {
      */
     @Test
     public void testOfferFirst() {
-        System.out.println("offerFirst");
-        Object e = null;
-        Lista instance = new Lista();
-        boolean expResult = false;
-        boolean result = instance.offerFirst(e);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Lista l = new Lista();
+        l.offerFirst("Uno");
+        assertEquals("Puntatori dal primo al nuovo elemento elemento.",l.next.next.prev.next.nome,"Uno");
+        assertEquals("Puntatori dal terzo al nuovo elemento elemento.",l.next.next.next.prev.nome,"Uno");
     }
 
     /**
@@ -87,14 +62,10 @@ public class ListaTest {
      */
     @Test
     public void testOfferLast() {
-        System.out.println("offerLast");
-        Object e = null;
-        Lista instance = new Lista();
-        boolean expResult = false;
-        boolean result = instance.offerLast(e);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Lista l = new Lista();
+        l.offerLast("Uno");
+        assertEquals("Puntatori dal primo al nuovo elemento elemento.",l.next.prev.next.prev.nome,"Uno");
+        assertEquals("Puntatori dal penultimo al nuovo elemento elemento.",l.next.prev.prev.next.nome,"Uno");
     }
 
     /**
@@ -102,13 +73,13 @@ public class ListaTest {
      */
     @Test
     public void testRemoveFirst() {
-        System.out.println("removeFirst");
-        Lista instance = new Lista();
-        Object expResult = null;
-        Object result = instance.removeFirst();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Lista l = new Lista();
+        l.addLast("Uno");
+        l.addLast("Due");
+        l.removeFirst();
+        assertEquals("Primo elemento.",l.next.prev.next.nome,"Due");
+        l.removeFirst();
+        assertEquals("Lista vuota.",l.next,null);
     }
 
     /**
@@ -116,13 +87,13 @@ public class ListaTest {
      */
     @Test
     public void testRemoveLast() {
-        System.out.println("removeLast");
-        Lista instance = new Lista();
-        Object expResult = null;
-        Object result = instance.removeLast();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Lista l = new Lista();
+        l.addLast("Uno");
+        l.addLast("Due");
+        l.removeLast();
+        assertEquals("Ultimo elemento.",l.next.prev.next.nome,"Uno");
+        l.removeLast();
+        assertEquals("Lista vuota.",l.next,null);
     }
 
     /**
