@@ -31,8 +31,8 @@ public class ListaTest {
     public void testAddFirst() {
         Lista l = new Lista();
         l.addFirst("Uno");
-        assertEquals("Puntatori dal primo al nuovo elemento elemento.",l.next.next.prev.next.nome,"Uno");
-        assertEquals("Puntatori dal terzo al nuovo elemento elemento.",l.next.next.next.prev.nome,"Uno");
+        assertEquals("Puntatori dal primo al nuovo elemento elemento.","Uno",l.next.next.prev.next.nome);
+        assertEquals("Puntatori dal terzo al nuovo elemento elemento.","Uno",l.next.next.next.prev.nome);
         // Manca il controllo se non riesce piu a inserire.
         // Manca il controllo se è vuota
     }
@@ -44,8 +44,8 @@ public class ListaTest {
     public void testAddLast() {
         Lista l = new Lista();
         l.addLast("Uno");
-        assertEquals("Puntatori dal primo al nuovo elemento elemento.",l.next.prev.next.prev.nome,"Uno");
-        assertEquals("Puntatori dal penultimo al nuovo elemento elemento.",l.next.prev.prev.next.nome,"Uno");
+        assertEquals("Puntatori dal primo al nuovo elemento elemento.","Uno",l.next.prev.next.prev.nome);
+        assertEquals("Puntatori dal penultimo al nuovo elemento elemento.","Uno",l.next.prev.prev.next.nome);
         // Manca il controllo se non riesce piu a inserire.
         // Manca il controllo se è vuota
     }
@@ -57,8 +57,8 @@ public class ListaTest {
     public void testOfferFirst() {
         Lista l = new Lista();
         l.offerFirst("Uno");
-        assertEquals("Puntatori dal primo al nuovo elemento elemento.",l.next.next.prev.next.nome,"Uno");
-        assertEquals("Puntatori dal terzo al nuovo elemento elemento.",l.next.next.next.prev.nome,"Uno");
+        assertEquals("Puntatori dal primo al nuovo elemento elemento.","Uno",l.next.next.prev.next.nome);
+        assertEquals("Puntatori dal terzo al nuovo elemento elemento.","Uno",l.next.next.next.prev.nome);
         // Manca il controllo se non riesce piu a inserire.
         // Manca il controllo se è vuota
     }
@@ -70,8 +70,8 @@ public class ListaTest {
     public void testOfferLast() {
         Lista l = new Lista();
         l.offerLast("Uno");
-        assertEquals("Puntatori dal primo al nuovo elemento elemento.",l.next.prev.next.prev.nome,"Uno");
-        assertEquals("Puntatori dal penultimo al nuovo elemento elemento.",l.next.prev.prev.next.nome,"Uno");
+        assertEquals("Puntatori dal primo al nuovo elemento elemento.","Uno",l.next.prev.next.prev.nome);
+        assertEquals("Puntatori dal penultimo al nuovo elemento elemento.","Uno",l.next.prev.prev.next.nome);
         // Manca il controllo se non riesce piu a inserire.
         // Manca il controllo se è vuota
     }
@@ -85,7 +85,7 @@ public class ListaTest {
         l.addLast("Uno");
         l.addLast("Due");
         l.removeFirst();
-        assertEquals("Primo elemento.",l.next.prev.next.nome,"Due");
+        assertEquals("Primo elemento.","Due",l.next.prev.next.nome);
         try{
             l.removeFirst();
         }catch(Exception e){
@@ -102,7 +102,7 @@ public class ListaTest {
         l.addLast("Uno");
         l.addLast("Due");
         l.removeLast();
-        assertEquals("Ultimo elemento.",l.next.prev.next.nome,"Uno");
+        assertEquals("Ultimo elemento.","Uno",l.next.prev.next.nome);
         try{
             l.removeLast();
         }catch(Exception e){
@@ -118,9 +118,9 @@ public class ListaTest {
         Lista l = new Lista();
         l.addLast("Uno");
         l.addLast("Due");
-        assertEquals("Valore di ritorno true.",l.removeLast(),true);
-        assertEquals("Primo elemento.",l.next.prev.next.nome,"Due");
-        assertEquals("Valore di ritorno false.",l.removeLast(),false);
+        assertEquals("Valore di ritorno true.",true,l.removeLast());
+        assertEquals("Primo elemento.","Due",l.next.prev.next.nome);
+        assertEquals("Valore di ritorno false.",false,l.removeLast());
     }
 
     /**
@@ -131,9 +131,9 @@ public class ListaTest {
         Lista l = new Lista();
         l.addLast("Uno");
         l.addLast("Due");
-        assertEquals("Valore di ritorno true.",l.removeLast(),true);
-        assertEquals("Ultimo elemento.",l.next.prev.next.nome,"Uno");
-        assertEquals("Valore di ritorno false.",l.removeLast(),false);
+        assertEquals("Valore di ritorno true.",true,l.removeLast());
+        assertEquals("Ultimo elemento.","Uno",l.next.prev.next.nome);
+        assertEquals("Valore di ritorno false.",false,l.removeLast());
     }
 
     /**
@@ -148,9 +148,9 @@ public class ListaTest {
             throw new Exception("Lista vuota.");
         }
         l.addLast("Uno");
-        assertEquals("Un elemento",l.getFirst(),"Uno");
+        assertEquals("Un elemento","Uno",l.getFirst());
         l.addLast("Due");
-        assertEquals("Piu elementi",l.getFirst(),"Uno");
+        assertEquals("Piu elementi","Uno",l.getFirst());
     }
 
     /**
@@ -165,9 +165,9 @@ public class ListaTest {
             throw new Exception("Lista vuota.");
         }
         l.addLast("Uno");
-        assertEquals("Un elemento",l.getLast(),"Uno");
+        assertEquals("Un elemento","Uno",l.getLast());
         l.addLast("Due");
-        assertEquals("Piu elementi",l.getLast(),"Due");
+        assertEquals("Piu elementi","Due",l.getLast());
     }
 
     /**
@@ -176,13 +176,13 @@ public class ListaTest {
     @Test
     public void testPeekFirst() {
         Lista l = new Lista();
-        assertEquals("Valore di ritorno false.",l.peekFirst(),false);
+        assertEquals("Valore di ritorno false.",false,l.peekFirst());
         l.addLast("Uno");
-        assertEquals("Valore di ritorno true.",l.peekFirst(),true);
-        assertEquals("Un elemento.",l.peekFirst(),"Uno");
+        assertEquals("Valore di ritorno true.",true,l.peekFirst());
+        assertEquals("Un elemento.","Uno",l.peekFirst());
         l.addLast("Due");
-        assertEquals("Secondo test valore di ritorno true.",l.peekFirst(),true);
-        assertEquals("Piu elementi.",l.peekFirst(),"Uno");
+        assertEquals("Secondo test valore di ritorno true.",true,l.peekFirst());
+        assertEquals("Piu elementi.","Uno",l.peekFirst());
     }
 
     /**
@@ -191,13 +191,13 @@ public class ListaTest {
     @Test
     public void testPeekLast() {
         Lista l = new Lista();
-        assertEquals("Valore di ritorno false.",l.peekLast(),false);
+        assertEquals("Valore di ritorno false.",false,l.peekLast());
         l.addLast("Uno");
-        assertEquals("Valore di ritorno true.",l.peekLast(),true);
-        assertEquals("Un elemento.",l.peekLast(),"Uno");
+        assertEquals("Valore di ritorno true.",true,l.peekLast());
+        assertEquals("Un elemento.","Uno",l.peekLast());
         l.addLast("Due");
-        assertEquals("Secondo test valore di ritorno true.",l.peekLast(),true);
-        assertEquals("Piu elementi.",l.peekLast(),"Due");
+        assertEquals("Secondo test valore di ritorno true.",true,l.peekLast());
+        assertEquals("Piu elementi.","Due",l.peekLast());
     }
 
     /**
