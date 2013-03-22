@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package proval;
+package Lista;
 
 import java.util.Collection;
 import java.util.Deque;
@@ -12,24 +12,24 @@ import java.util.Iterator;
  *
  * @author Mattia
  */
-public class ProvaL implements Deque {
+public class Lista implements Deque {
 
     String nome;
-    ProvaL next, prev;
+    Lista next, prev;
 
-    public ProvaL() {
+    public Lista() {
         next = null;
         prev = null;
     }
     
-    public ProvaL(String nome) {
+    public Lista(String nome) {
         next = null;
         prev = null;
         this.nome = nome;
     }    
 
     public static void main(String[] args) {
-        ProvaL p = new ProvaL();
+        Lista p = new Lista();
         System.out.println(p);
         p.addLast("Uno");
         System.out.println(p);
@@ -46,8 +46,8 @@ public class ProvaL implements Deque {
 
     @Override
     public void addLast(Object e) {
-        ProvaL l = new ProvaL((String) e);
-        ProvaL indice = this;
+        Lista l = new Lista((String) e);
+        Lista indice = this;
         if (this.next == null) {
             this.next = l;
             l.prev = l;
@@ -231,7 +231,7 @@ public class ProvaL implements Deque {
         String s = "ProvaL{";
         if (this.next==null)
             return s+"}";
-        ProvaL top=this.next;
+        Lista top=this.next;
         for (top = this.next; top.next != this.next; top = top.next) {
             s += " nome = " + top.nome + ",";
         }
